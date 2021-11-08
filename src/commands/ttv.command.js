@@ -16,7 +16,7 @@ module.exports = {
         if(!data[0]){
             embed.setTitle(`Brak użytkownika ${user} w bazie xayo.pl`);
         } else{
-            embed.setTitle(`Top 5 streamerów użytkownika ${user}`);
+            embed.setTitle(`Top 5 streamerów użytkownika ${user}\nhttps://xayo.pl/${user}`);
             for(let i = 0; i < 5; i++){
                 const streamer = data[i];
                 if(!streamer) continue;
