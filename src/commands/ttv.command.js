@@ -8,17 +8,22 @@ module.exports = {
         if(!args[0]) 
 			return message.channel.send("Podaj nazwę użytkownika!");
 
-        const url = `https://xayo.pl/api/watchtime/${args[0]}`;
-        const data = await axios.get(url).then(({ data }) => data);
-        
         let embed = new Discord.MessageEmbed()
-        .setTitle(`Top 5 streamerów użytkownika ${args[0]}`);
-        for(let i = 0; i < 5; i++){
-            const streamer = data[i];
-            if(!streamer) continue;
-            //console.log(streamer.streamer + " " + parseFloat(streamer.count*5/60).toFixed(2) + " godzin");
-            embed.addField(streamer.streamer, parseFloat(streamer.count*5/60).toFixed(2) + " godzin");
-        }
+        user = args[0].toLowerCase();
+        const url = `https://xayo.pl/api/watchtime/${user}`;
+        const data = await axios.get(url).then(({ data }) => data);
+
+        if(!data[0]){
+            embed.setTitle(`Brak użytkownika ${user} w bazie xayo.pl`);
+        } else{
+            embed.setTitle(`Top 5 streamerów użytkownika ${user}`);
+            for(let i = 0; i < 5; i++){
+                const streamer = data[i];
+                if(!streamer) continue;
+                //console.log(streamer.streamer + " " + parseFloat(streamer.count*5/60).toFixed(2) + " godzin");
+                embed.addField(streamer.streamer, parseFloat(streamer.count*5/60).toFixed(2) + " godzin");
+            }
+        } 
         message.channel.send({ embeds: [embed] });
     }
 }
