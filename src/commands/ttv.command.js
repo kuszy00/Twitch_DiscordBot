@@ -21,7 +21,7 @@ module.exports = {
                 const streamer = data[i];
                 if(!streamer) continue;
                 //console.log(streamer.streamer + " " + parseFloat(streamer.count*5/60).toFixed(2) + " godzin");
-                embed.addField(streamer.streamer, parseFloat(streamer.count*5/60).toFixed(2) + " godzin");
+                embed.addField(streamer.streamer, parseFloat(streamer.count*5/60).toFixed(2) + "h");
             }
         } 
         message.channel.send({ embeds: [embed] });
