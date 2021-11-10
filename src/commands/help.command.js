@@ -13,7 +13,7 @@ module.exports = {
         for(const file of commandFiles) {
             const command = require(__dirname + `/${file}`);
             if(command.usage) {
-                embed.addField(prefix + command.name, command.description + "\n " + command.usage);
+                embed.addField(prefix + command.name, command.description + "\n " + prefix + command.usage);
             } else {
                 embed.addField(prefix + command.name, command.description);
             }          

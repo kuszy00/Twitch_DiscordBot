@@ -2,8 +2,8 @@ const axios = require('axios');
 
 module.exports = {
     name: 'ttv',
-    description: "Pokazuje top 5 streamerów pod względem czasu oglądania danego streamera. Dane pobierane są z xayo.pl",
-    usage: "ttv <nazwa z Twitcha>",
+    description: "Pokazuje top 5 streamerów pod względem czasu oglądania danego użytkownika. Dane pobierane są z xayo.pl",
+    usage: "ttv <nick z Twitcha>",
     async execute(client, message, args, Discord){
         if(!args[0]) 
 			return message.channel.send("Podaj nazwę użytkownika!");
